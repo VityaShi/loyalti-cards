@@ -1,13 +1,19 @@
+import { getAllCardIds, getCardData } from '@entities/card'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { getCardData } from '../api/getCardData'
+
+export async function generateStaticParams() {
+	const ids = await getAllCardIds()
+	return ids.map(id => ({ id }))
+}
 
 interface CardPageProps {
 	params: { id: string }
 }
 
 export default async function CardPage({ params }: CardPageProps) {
-	const card = await getCardData(params.id)
+	const { id } = await params
+	const card = await getCardData(id)
 
 	if (!card) {
 		notFound()

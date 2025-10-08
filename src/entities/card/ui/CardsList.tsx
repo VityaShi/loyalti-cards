@@ -1,13 +1,9 @@
-import { PrismaClient } from '@prisma/client'
 import Link from 'next/link'
+import { getCards } from '../api/card-api'
 import { CardItem } from './CardItem'
 
-const prisma = new PrismaClient()
-
 export const CardsList = async () => {
-	const cards = await prisma.card.findMany({
-		orderBy: { createdAt: 'desc' },
-	})
+	const cards = await getCards()
 
 	return (
 		<div>
