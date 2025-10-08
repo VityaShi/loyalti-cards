@@ -2,7 +2,6 @@ const CACHE_NAME = 'loyalty-cache-v1'
 
 // Статические страницы и API, которые хотим кешировать
 const urlsToCache = [
-	'/', // главная
 	'/cards', // список карточек
 	'/api/cards', // API карточек
 ]
@@ -26,29 +25,34 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
 	const { request } = event
 
-	// Игнорируем RSC и все файлы Next.js
-	if (request.url.includes('_rsc') || request.url.includes('/_next/')) return
+	// Пропускаем служебные запросы Next.js
+	if (
+		request.method !== 'GET' ||
+		request.url.includes('_rsc') ||
+		request.url.includes('/_next/') ||
+		request.url.endsWith('/') // пропускаем главную
+	)
+		return
 
-	if (request.method === 'GET') {
-		event.respondWith(
-			caches.match(request).then(cachedResponse => {
-				const networkFetch = fetch(request)
-					.then(response => {
-						// Кэшируем успешные GET-запросы
-						if (response && response.status === 200) {
-							caches
-								.open(CACHE_NAME)
-								.then(cache => cache.put(request, response.clone()))
-						}
-						return response
-					})
-					.catch(() => {
-						// Если сеть недоступна, отдаем кеш
-						return cachedResponse
-					})
-				// Отдаем кеш если есть, иначе fetch
-				return cachedResponse || networkFetch
-			})
-		)
-	}
+	event.respondWith(
+		caches.match(request).then(cachedResponse => {
+			const fetchPromise = fetch(request)
+				.then(networkResponse => {
+					if (
+						networkResponse &&
+						networkResponse.status === 200 &&
+						networkResponse.type === 'basic'
+					) {
+						const responseToCache = networkResponse.clone()
+						caches.open(CACHE_NAME).then(cache => {
+							cache.put(request, responseToCache)
+						})
+					}
+					return networkResponse.clone()
+				})
+				.catch(() => cachedResponse)
+
+			return cachedResponse || fetchPromise
+		})
+	)
 })

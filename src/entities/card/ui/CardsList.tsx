@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client'
+import Link from 'next/link'
+import { CardItem } from './CardItem'
 
 const prisma = new PrismaClient()
 
@@ -13,11 +15,9 @@ export const CardsList = async () => {
 				<ul className='space-y-3'>
 					{cards.map(c => (
 						<li key={c.id} className='rounded-2xl shadow-md p-4 bg-white'>
-							{/* <CardItem {...c} /> */}
-							<article>
-								<h3 className='text-lg font-semibold'>{c.storeName}</h3>
-								<p className='text-gray-600'>{c.cardNumber}</p>
-							</article>
+							<Link href={`/cards/${c.id}`}>
+								<CardItem {...c} />
+							</Link>
 						</li>
 					))}
 				</ul>
