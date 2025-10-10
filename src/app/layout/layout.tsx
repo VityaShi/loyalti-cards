@@ -1,4 +1,5 @@
 import { StoreProvider } from '@/shared/store'
+import Navbar from '@/widgets/navbar'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { RegisterSW } from '../config/RegisterSW'
@@ -29,7 +30,13 @@ export function RootLayout({
 	return (
 		<html lang='ru'>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<StoreProvider>{children}</StoreProvider>
+				<StoreProvider>
+					<header></header>
+					<main>{children}</main>
+					<footer>
+						<Navbar />
+					</footer>
+				</StoreProvider>
 				<RegisterSW />
 			</body>
 		</html>
