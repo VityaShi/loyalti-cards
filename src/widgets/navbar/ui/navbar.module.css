@@ -1,0 +1,58 @@
+.menu {
+	background-color: #1d1f24;
+	padding: 8px 32px;
+	/* display: flex;
+	justify-content: space-between;
+	align-items: center; */
+}
+.menu-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+}
+
+.menu-item {
+	padding: 5px;
+}
+
+.menu-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+.menu-item--scan {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #539df3; /* Пример цвета */
+	border-radius: 50%;
+	width: 40px;
+	height: 42px;
+}
+.menu-item--active {
+	background-color: #4f1eff;
+	border-radius: 35px;
+	padding: 10px 20px;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, background-color 0.3s ease; /* Анимация трансформации и цвета */
+}
+
+.menu-item--active:hover {
+	transform: scale(1.05); /* Увеличение при наведении */
+	background-color: #104e8b; /* Темнее при наведении */
+}
+
+.menu-item--active img {
+	filter: brightness(2) invert(1);
+	transition: filter 0.3s ease; /* Анимация для иконки */
+}
+
+/* .menu-item--active a {
+	color: inherit;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+} */

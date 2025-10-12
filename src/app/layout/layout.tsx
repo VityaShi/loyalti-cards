@@ -3,7 +3,7 @@ import Navbar from '@/widgets/navbar'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { RegisterSW } from '../config/RegisterSW'
-import '../styles/globals.css'
+import '../styles/index.css'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
