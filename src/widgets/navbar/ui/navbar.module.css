@@ -1,27 +1,27 @@
 .menu {
-	/* background-color: #1d1f24;
-	padding: 8px 32px; */
-
+	padding-block: 10px;
 	background: linear-gradient(
 		180deg,
 		rgba(54, 62, 81, 0.4) -4.83%,
 		rgba(24, 28, 36, 0.4) 116.91%
 	);
-	/* border: 2px solid #fff; */
 	backdrop-filter: blur(50px);
-	/* display: flex;
-	justify-content: space-between;
-	align-items: center; */
 }
+
 .menu-list {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	gap: 16px;
 }
 
 .menu-item {
-	padding: 10px 32px;
+	width: 60px;
+	height: 50px;
+	border-radius: 20px;
+	background: transparent;
+	/* padding: 10px; */
+	transition: all 0.25s ease;
 }
 
 .menu-link {
@@ -30,37 +30,42 @@
 	align-items: center;
 	width: 100%;
 	height: 100%;
+	pointer-events: none;
 }
+
 .menu-item--scan {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #539df3; /* Пример цвета */
-	border-radius: 50%;
-	width: 40px;
-	height: 42px;
+	background-color: #539df3;
+	border-radius: 25px;
+	margin-top: -50px;
+	/* width: 40px; */
+	height: 60px;
+	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.363);
+	/* transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease; */
 }
+
+.menu-item--scan:hover {
+	transform: translateY(-5px);
+}
+
 .menu-item--active {
-	background-color: #4f1eff;
+	/* fill: #4e4af2; */
+	/* color: linear-gradient(153deg, #34c8e8 1.7%, #4e4af2 114.52%); */
+	/* background-color: #4f1eff;
 	border-radius: 35px;
-	padding: 10px 20px;
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-	transition: transform 0.3s ease, background-color 0.3s ease; /* Анимация трансформации и цвета */
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); */
+	/* transition: transform 0.3s ease, background-color 0.3s ease,
+		box-shadow 0.3s ease; Добавляем переход для тени */
+	/* position: relative; Для правильного наложения эффектов */
+	transform: scale(1.2);
 }
-
-.menu-item--active:hover {
-	transform: scale(1.05); /* Увеличение при наведении */
-	background-color: #104e8b; /* Темнее при наведении */
+.menu-item--active .menu-link img {
+	/* fill: #4e4af2; */
+	/* color: linear-gradient(153deg, #34c8e8 1.7%, #4e4af2 114.52%); */
+	/* background-color: #4f1eff; */
+	border-radius: 0 0 15px 15px;
+	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.856);
 }
-
-.menu-item--active img {
-	filter: brightness(2) invert(1);
-	transition: filter 0.3s ease; /* Анимация для иконки */
-}
-
-/* .menu-item--active a {
-	color: inherit;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-} */
