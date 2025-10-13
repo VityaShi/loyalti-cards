@@ -1,0 +1,23 @@
+.backButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: transparent; /* Убедимся, что фон прозрачный */
+	border: none;
+	cursor: pointer;
+	width: 28px; /* Точно под размер иконки */
+	height: 28px; /* Точно под размер иконки */
+	position: absolute;
+	top: 20px; /* Оставляем позиционирование */
+	left: 20px; /* Оставляем позиционирование */
+	padding: 0; /* Убираем отступы, чтобы не увеличивать размер */
+	transition: transform 0.3s ease;
+}
+
+.backButton:hover {
+	transform: scale(1.05);
+}
+
+.backButton img {
+	filter: drop-shadow(50px 50px 100px rgba(6, 18, 41, 0.945));
+}

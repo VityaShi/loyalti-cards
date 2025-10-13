@@ -1,4 +1,5 @@
 import { StoreProvider } from '@/shared/store'
+import { BackButton } from '@/shared/ui'
 import Navbar from '@/widgets/navbar'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -31,7 +32,9 @@ export function RootLayout({
 		<html lang='ru'>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<StoreProvider>
-					<header></header>
+					<header>
+						<BackButton />
+					</header>
 					<main>{children}</main>
 					<footer>
 						<Navbar />

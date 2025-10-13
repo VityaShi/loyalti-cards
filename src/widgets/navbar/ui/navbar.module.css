@@ -1,6 +1,14 @@
 .menu {
-	background-color: #1d1f24;
-	padding: 8px 32px;
+	/* background-color: #1d1f24;
+	padding: 8px 32px; */
+
+	background: linear-gradient(
+		180deg,
+		rgba(54, 62, 81, 0.4) -4.83%,
+		rgba(24, 28, 36, 0.4) 116.91%
+	);
+	/* border: 2px solid #fff; */
+	backdrop-filter: blur(50px);
 	/* display: flex;
 	justify-content: space-between;
 	align-items: center; */
@@ -13,7 +21,7 @@
 }
 
 .menu-item {
-	padding: 5px;
+	padding: 10px 32px;
 }
 
 .menu-link {
