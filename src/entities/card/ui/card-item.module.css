@@ -1,3 +1,12 @@
 .container {
 	border-radius: 15%;
+	margin: auto;
+	background: linear-gradient(
+		180deg,
+		rgba(54, 62, 81, 0.4) -4.83%,
+		rgba(24, 28, 36, 0.4) 116.91%
+	);
+	width: fit-content;
+	height: fit-content;
+	/* backdrop-filter: blur(50px); */
 }

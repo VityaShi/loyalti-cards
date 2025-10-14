@@ -19,7 +19,7 @@ export default async function CardPage({ params }: CardPageProps) {
 		notFound()
 	}
 	return (
-		<main>
+		<section>
 			<Image
 				src='/store-logos/x5-group.png' // путь относительно /public
 				alt='Логотип'
@@ -29,6 +29,6 @@ export default async function CardPage({ params }: CardPageProps) {
 			/>
 
 			<p className='text-gray-600'>{card.storeName}</p>
-		</main>
+		</section>
 	)
 }

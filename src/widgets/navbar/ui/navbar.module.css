@@ -43,8 +43,6 @@
 	/* width: 40px; */
 	height: 60px;
 	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.363);
-	/* transition: transform 0.3s ease, background-color 0.3s ease,
-		box-shadow 0.3s ease; */
 }
 
 .menu-item--scan:hover {
@@ -52,20 +50,5 @@
 }
 
 .menu-item--active {
-	/* fill: #4e4af2; */
-	/* color: linear-gradient(153deg, #34c8e8 1.7%, #4e4af2 114.52%); */
-	/* background-color: #4f1eff;
-	border-radius: 35px;
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); */
-	/* transition: transform 0.3s ease, background-color 0.3s ease,
-		box-shadow 0.3s ease; Добавляем переход для тени */
-	/* position: relative; Для правильного наложения эффектов */
-	transform: scale(1.2);
-}
-.menu-item--active .menu-link img {
-	/* fill: #4e4af2; */
-	/* color: linear-gradient(153deg, #34c8e8 1.7%, #4e4af2 114.52%); */
-	/* background-color: #4f1eff; */
-	border-radius: 0 0 15px 15px;
-	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.856);
+	transform: scale(1.4);
 }

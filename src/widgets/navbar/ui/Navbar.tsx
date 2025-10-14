@@ -1,15 +1,26 @@
 'use client'
 
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import styles from './navbar.module.css'
 
 export default function Navbar() {
-	const [activeItem, setActiveItem] = useState('home') // Начальное активное состояние
-
+	const [activeItem, setActiveItem] = useState<string | null>('home') // Начальное активное состояние
+	const pathname = usePathname()
+	useEffect(() => {
+		if (pathname === '/' || pathname === '/cards') {
+			setActiveItem('home')
+		} else if (pathname?.startsWith('/scan')) {
+			setActiveItem('scan')
+		} else if (pathname?.startsWith('/user')) {
+			setActiveItem('user')
+		} else {
+			setActiveItem(null) // Сбрасываем для других маршрутов
+		}
+	}, [pathname])
 	return (
 		<nav className={styles.menu}>
 			<ul className={styles['menu-list']}>
@@ -18,24 +29,17 @@ export default function Navbar() {
 						styles['menu-item'],
 						activeItem === 'home' && styles['menu-item--active']
 					)}
-					onClick={() => setActiveItem('home')}
+					onClick={() => {
+						setActiveItem('home')
+					}}
 				>
 					<Link className={styles['menu-link']} href='/'>
-						<motion.div
-							whileHover={{ scale: 1.1 }} // Увеличение при наведении
-							whileTap={{ y: -3, boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)' }} // Подъём и тень при нажатии
-							// className={clsx(
-							// 	styles['menu-item'],
-							// 	activeItem === 'home' && styles['menu-item--active']
-							// )}
-						>
-							<Image
-								src='/navbar/li_home.svg'
-								width={25}
-								height={24}
-								alt='home'
-							/>
-						</motion.div>
+						<Image
+							src='/navbar/li_home.svg'
+							width={25}
+							height={24}
+							alt='home'
+						/>
 					</Link>
 				</li>
 				<li
