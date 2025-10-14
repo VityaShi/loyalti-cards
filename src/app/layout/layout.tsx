@@ -4,6 +4,8 @@ import Navbar from '@/widgets/navbar'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { RegisterSW } from '../config/RegisterSW'
+import styles from './layout.module.css'
+
 import '../styles/index.css'
 
 const geistSans = Geist({
@@ -32,7 +34,7 @@ export function RootLayout({
 		<html lang='ru'>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<StoreProvider>
-					<header>
+					<header className={styles.header}>
 						<BackButton />
 					</header>
 					<main>{children}</main>

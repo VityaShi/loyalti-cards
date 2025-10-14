@@ -1,45 +1,44 @@
-import { initialApi } from '@/shared/server'
-import { Card } from '../model/card'
+import { supabase } from '@shared/server'
 
-import { prisma } from '@/shared/server'
-
+// Получение одной карты по ID
 export async function getCardData(id: string) {
-	return prisma.card.findUnique({
-		where: { id },
-	})
+	const numericId = parseInt(id, 10) // Преобразуем строку в число
+	if (isNaN(numericId)) {
+		throw new Error('Invalid card ID: must be a valid number')
+	}
+
+	const { data, error } = await supabase
+		.from('cards')
+		.select('*')
+		.eq('id', numericId)
+		.single()
+
+	if (error) {
+		throw new Error(`Failed to fetch card: ${error.message}`)
+	}
+
+	return data
 }
 
+// Получение всех ID карт
 export async function getAllCardIds() {
-	return prisma.card.findMany({
-		select: { id: true },
-	})
+	const { data, error } = await supabase.from('cards').select('id')
+	console.log(data)
+	if (error) {
+		throw new Error(`Failed to fetch card IDs: ${error.message}`)
+	}
+
+	// Убедимся, что возвращаем ID как строки для generateStaticParams
+	return data.map(item => ({ id: item.id.toString() }))
 }
 
+// Получение всех карт
 export async function getCards() {
-	return prisma.card.findMany()
+	const { data, error } = await supabase.from('cards').select('*')
+	console.log(data)
+	if (error) {
+		throw new Error(`Failed to fetch cards: ${error.message}`)
+	}
+
+	return data
 }
-
-const cardApi = initialApi
-	.enhanceEndpoints({
-		addTagTypes: ['Card'],
-	})
-	.injectEndpoints({
-		endpoints: builder => ({
-			getCards: builder.query<Card[], void>({
-				query: () => '/cards',
-				providesTags: ['Card'],
-			}),
-			addCard: builder.mutation<Card, Partial<Card>>({
-				query: body => ({
-					url: '/cards',
-					method: 'POST',
-					body,
-				}),
-				invalidatesTags: ['Card'],
-			}),
-		}),
-
-		overrideExisting: true,
-	})
-
-export const { useGetCardsQuery, useAddCardMutation } = cardApi

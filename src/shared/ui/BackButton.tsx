@@ -9,9 +9,9 @@ export function BackButton() {
 	const router = useRouter()
 
 	// Скрываем кнопку на главной странице
-	if (pathname === '/' || pathname === '/cards') {
-		return null
-	}
+	// if (pathname === '/' || pathname === '/cards') {
+	// 	return null
+	// }
 
 	return (
 		<button

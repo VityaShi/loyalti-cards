@@ -5,19 +5,17 @@
 	"scripts": {
 		"dev": "next dev --turbo",
 		"dev-pwa": "next dev --experimental-https",
-		"build": "next build --turbopack",
+		"build": "next build",
 		"start": "next start",
 		"lint": "eslint",
-		"preinstall": "npx only-allow pnpm",
-		"seed": "tsx prisma/seed.ts"
+		"preinstall": "npx only-allow pnpm"
 	},
 	"dependencies": {
-		"@prisma/client": "^6.16.3",
 		"@reduxjs/toolkit": "^2.9.0",
+		"@supabase/supabase-js": "^2.75.0",
 		"clsx": "^2.1.1",
 		"framer-motion": "^12.23.24",
 		"next": "15.5.4",
-		"prisma": "^6.16.3",
 		"react": "19.1.0",
 		"react-dom": "19.1.0",
 		"react-redux": "^9.2.0"
@@ -31,8 +29,6 @@
 		"eslint": "^9",
 		"eslint-config-next": "15.5.4",
 		"only-allow": "^1.2.1",
-		"ts-node": "^10.9.2",
-		"tsx": "^4.20.6",
 		"typescript": "^5"
 	}
 }

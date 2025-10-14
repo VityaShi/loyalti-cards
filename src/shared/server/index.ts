@@ -1,2 +1,2 @@
 export { initialApi } from './initial-api'
-export { prisma } from './prisma'
+export { supabase } from './supabase'

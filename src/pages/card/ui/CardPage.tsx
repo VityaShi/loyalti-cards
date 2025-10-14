@@ -1,6 +1,7 @@
 import { getAllCardIds, getCardData } from '@entities/card'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import styles from './card-page.module.css'
 
 export async function generateStaticParams() {
 	const ids = await getAllCardIds()
@@ -14,17 +15,18 @@ interface CardPageProps {
 export default async function CardPage({ params }: CardPageProps) {
 	const { id } = await params
 	const card = await getCardData(id)
+	const getPath = () => `/store-logos/${card?.storeName}.png`
 
 	if (!card) {
 		notFound()
 	}
 	return (
-		<section>
+		<section className={styles['card-page']}>
 			<Image
-				src='/store-logos/x5-group.png' // путь относительно /public
+				src={getPath()} // путь относительно /public
 				alt='Логотип'
-				width={120}
-				height={40}
+				width={200}
+				height={120}
 				priority
 			/>
 
