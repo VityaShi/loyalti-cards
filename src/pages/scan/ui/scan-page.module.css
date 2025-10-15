@@ -1,0 +1,7 @@
+.scan-page {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}

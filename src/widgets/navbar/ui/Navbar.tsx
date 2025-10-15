@@ -50,7 +50,7 @@ export default function Navbar() {
 					)}
 					onClick={() => setActiveItem('scan')}
 				>
-					<Link className={styles['menu-link']} href='/'>
+					<Link className={styles['menu-link']} href='/scan'>
 						<Image src='/navbar/scan.svg' width={25} height={24} alt='scan' />
 					</Link>
 				</li>

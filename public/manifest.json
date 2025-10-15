@@ -1,19 +1,47 @@
 {
 	"name": "Loyalty Cards",
-	"short_name": "Cards",
+	"short_name": "Loyalty",
 	"description": "Приложение для хранения скидочных карт",
 	"start_url": "/",
 	"display": "standalone",
-	"background_color": "#ffffff",
-	"theme_color": "#317EFB",
+	"background_color": "#1d1f24",
+	"theme_color": "#242c3b",
+	"orientation": "portrait-primary",
 	"icons": [
 		{
-			"src": "/icons/credit_card_192.png",
-			"sizes": "192x192",
+			"src": "/icons/icon-48-48.png",
+			"sizes": "128x128",
 			"type": "image/png"
 		},
 		{
-			"src": "/icons/credit_card_512.png",
+			"src": "/icons/icon-72-72.png",
+			"sizes": "72x72",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-96-96.png",
+			"sizes": "96x96",
+			"type": "image/png"
+		},
+
+		{
+			"src": "/icons/icon-144-144.png",
+			"sizes": "144x144",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/152.png",
+			"sizes": "152x152",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-192-192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+
+		{
+			"src": "/icons/icon-512-512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		}
