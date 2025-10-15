@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import styles from './backButton.module.css'
 
 export function BackButton() {
-	const pathname = usePathname()
+	// const pathname = usePathname()
 	const router = useRouter()
 
 	// Скрываем кнопку на главной странице

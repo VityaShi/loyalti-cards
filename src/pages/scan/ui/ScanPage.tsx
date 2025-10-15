@@ -12,7 +12,7 @@ export default function ScanPage() {
 	const [result, setResult] = useState('Направьте камеру на карту')
 	const [error, setError] = useState<string | null>(null)
 
-	const handleScan = (result: any) => {
+	const handleScan = (result: { getText: () => string }) => {
 		if (result && typeof result.getText === 'function') {
 			const scannedText = result.getText() // Используем getText() для получения текста
 			setResult(scannedText)
@@ -20,7 +20,7 @@ export default function ScanPage() {
 		}
 	}
 
-	const handleError = (err: any) => {
+	const handleError = (err: Error) => {
 		setError('Ошибка доступа к камере: ' + err.message)
 		console.error('Ошибка сканирования:', err)
 	}

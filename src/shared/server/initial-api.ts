@@ -5,5 +5,5 @@ export const initialApi = createApi({
 
 	baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
 	tagTypes: [],
-	endpoints: builder => ({}),
+	endpoints: () => ({}),
 })
