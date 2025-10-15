@@ -32,6 +32,14 @@ export function RootLayout({
 }>) {
 	return (
 		<html lang='ru'>
+			<head>
+				<link rel='manifest' href='/manifest.json' /> {/* Явно добавляем тег */}
+				<meta name='theme-color' content='#317EFB' />
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=1.0, viewport-fit=cover'
+				/>
+			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<StoreProvider>
 					<header className={styles.header}>
