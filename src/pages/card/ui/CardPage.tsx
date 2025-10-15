@@ -16,11 +16,11 @@ interface RouteParams {
 
 // Определяем пропсы с учётом асинхронного контекста
 interface CardPageProps {
-	params: RouteParams // params как объект с id: string
+	params: Promise<RouteParams> // params как объект с id: string
 }
 
 export default async function CardPage({ params }: CardPageProps) {
-	const { id } = params
+	const { id } = await params
 	const numericId = parseInt(id, 10) // Преобразуем строку в число
 	if (isNaN(numericId)) {
 		notFound() // Некорректный id
