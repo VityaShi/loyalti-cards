@@ -1,24 +1,34 @@
-import { PrismaClient } from '@prisma/client'
+import { supabase } from '@/shared/server'
 import { NextResponse } from 'next/server'
-
-const prisma = new PrismaClient()
 
 // GET /api/cards
 export async function GET() {
-	const cards = await prisma.card.findMany()
-	return NextResponse.json(cards)
+	const { data, error } = await supabase.from('cards').select('*')
+
+	if (error) {
+		return NextResponse.json(
+			{ error: `Failed to fetch cards: ${error.message}` },
+			{ status: 500 }
+		)
+	}
+
+	return NextResponse.json(data)
 }
 
 // POST /api/cards
 export async function POST(req: Request) {
-	const data = await req.json()
-	const card = await prisma.card.create({ data })
-	return NextResponse.json(card)
-}
+	const { name, code, storeName, userId } = await req.json() // Адаптируй поля под твою схему
 
-// // DELETE /api/cards/:id
-// export async function DELETE(req: Request) {
-// 	const id = req.nextUrl.searchParams.get('id')
-// 	const card = await prisma.card.delete({ where: { id } })
-// 	return NextResponse.json(card)
-// }
+	const { data, error } = await supabase
+		.from('cards')
+		.insert([{ name, code, storeName, userId }])
+
+	if (error) {
+		return NextResponse.json(
+			{ error: `Failed to create card: ${error.message}` },
+			{ status: 500 }
+		)
+	}
+
+	return NextResponse.json(data?.[0]) // Возвращаем первую вставленную запись
+}
