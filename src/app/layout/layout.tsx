@@ -21,7 +21,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: 'Loyalty Cards',
 	description: 'Приложение для хранения скидочных карт',
-	manifest: '/manifest.json', // 📌 важный момент
 	themeColor: '#317EFB',
 }
 
@@ -32,14 +31,7 @@ export function RootLayout({
 }>) {
 	return (
 		<html lang='ru'>
-			<head>
-				<link rel='manifest' href='/manifest.json' /> {/* Явно добавляем тег */}
-				<meta name='theme-color' content='#317EFB' />
-				<meta
-					name='viewport'
-					content='width=device-width, initial-scale=1.0, viewport-fit=cover'
-				/>
-			</head>
+			<head />
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<StoreProvider>
 					<header className={styles.header}>
