@@ -24,14 +24,13 @@ export const metadata: Metadata = {
 	themeColor: '#317EFB',
 }
 
-export function RootLayout({
+export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
 }>) {
 	return (
 		<html lang='ru'>
-			<head />
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<StoreProvider>
 					<header className={styles.header}>
