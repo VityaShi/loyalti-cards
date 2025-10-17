@@ -6,6 +6,14 @@
 		rgba(24, 28, 36, 0.4) 116.91%
 	);
 	backdrop-filter: blur(50px);
+	position: fixed; /* Фиксируем навбар внизу */
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-bottom: env(
+		safe-area-inset-bottom,
+		0px
+	); /* Отступ для системного UI */
 }
 
 .menu-list {
