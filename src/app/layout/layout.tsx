@@ -21,7 +21,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: 'Loyalty Cards',
 	description: 'Приложение для хранения скидочных карт',
-	themeColor: '#317EFB',
 }
 
 export default function RootLayout({

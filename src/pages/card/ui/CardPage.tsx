@@ -1,6 +1,8 @@
 import { getAllCardIds, getCardData } from '@entities/card'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+
+import Barcode from './Barcode'
 import styles from './card-page.module.css'
 
 // Генерация статических параметров для динамических маршрутов
@@ -19,7 +21,7 @@ interface CardPageProps {
 	params: Promise<RouteParams> // params как объект с id: string
 }
 
-export default async function CardPage({ params }: CardPageProps) {
+export async function CardPage({ params }: CardPageProps) {
 	const { id } = await params
 	const numericId = parseInt(id, 10) // Преобразуем строку в число
 	if (isNaN(numericId)) {
@@ -36,8 +38,27 @@ export default async function CardPage({ params }: CardPageProps) {
 
 	return (
 		<section className={styles['card-page']}>
-			<Image src={getPath()} alt='Логотип' width={200} height={120} priority />
-			<p className='text-gray-600'>{card.storeName}</p>
+			<div className={styles['card-page__image-container']}>
+				<Image
+					className={styles['card-page__image']}
+					src={getPath()}
+					alt='Логотип'
+					fill
+					priority
+				/>
+			</div>
+
+			<p>{card.storeName}</p>
+			<div className={styles['card-page__barcode-container']}>
+				<Barcode
+					value={card.cardNumber}
+					format='CODE128'
+					width={1.7}
+					height={65}
+					// displayValue={false}
+					background='transparent'
+				/>
+			</div>
 		</section>
 	)
 }

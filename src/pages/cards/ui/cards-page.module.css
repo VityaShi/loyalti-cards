@@ -4,3 +4,8 @@
 	gap: 32px;
 	/* grid-row-start: 2; */
 }
+.card-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}

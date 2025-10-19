@@ -1,1 +1,1 @@
-export { default } from '@/pages/card'
+export { CardPage as default } from '@/pages/card'

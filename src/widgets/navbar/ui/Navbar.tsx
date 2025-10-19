@@ -29,11 +29,11 @@ export default function Navbar() {
 						styles['menu-item'],
 						activeItem === 'home' && styles['menu-item--active']
 					)}
-					onClick={() => {
-						setActiveItem('home')
-					}}
+					// onClick={() => {
+					// 	setActiveItem('home')
+					// }}
 				>
-					<Link className={styles['menu-link']} href='/'>
+					<Link className={styles['menu-link']} href='/cards'>
 						<Image
 							src='/navbar/li_home.svg'
 							width={25}

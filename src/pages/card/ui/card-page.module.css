@@ -5,3 +5,20 @@
 	align-items: center;
 	gap: 16px;
 }
+.card-page__image-container {
+	width: 100%;
+	position: relative;
+	aspect-ratio: 350 / 200;
+}
+.card-page__image {
+	object-fit: fill;
+	border-radius: 10px;
+}
+.card-page__barcode-container {
+	background-color: white;
+	width: 100%;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	border-radius: 10px;
+}
