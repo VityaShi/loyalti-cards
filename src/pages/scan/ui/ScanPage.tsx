@@ -63,9 +63,21 @@ export default function ScanPage() {
 				<QrReader
 					onResult={(result, error) => {
 						if (result) handleScan(result)
-						if (error) handleError(error)
+						if (error) {
+							console.error('Raw camera error:', error)
+							try {
+								setError(
+									'Ошибка доступа к камере: ' +
+										JSON.stringify(error, Object.getOwnPropertyNames(error))
+								)
+							} catch {
+								setError('Ошибка доступа к камере (объект не сериализуется)')
+							}
+						}
 					}}
-					constraints={{ facingMode: 'environment' }}
+					constraints={{
+						facingMode: 'environment',
+					}}
 				/>
 			</div>
 			<p className={styles.result}>{result}</p>
