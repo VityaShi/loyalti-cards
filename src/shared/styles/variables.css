@@ -1,0 +1,14 @@
+:root {
+	--color-light: #ffffff;
+	--color-light-alt: #ededed;
+	--color-dark: #171717;
+	--color-dark-alt: #242c3b;
+
+	--bg-skeleton: linear-gradient(
+		180deg,
+		rgba(54, 62, 81, 0.4) -4.83%,
+		rgba(24, 28, 36, 0.4) 116.91%
+	);
+
+	--border-radius: 10px;
+}

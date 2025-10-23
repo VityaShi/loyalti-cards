@@ -9,6 +9,7 @@ export function CardSkeleton() {
 				<div className="card-skeleton__title"></div>
 				<div className="card-skeleton__description"></div>
 			</div> */}
+			<div className={styles['card-skeleton__barcode']}></div>
 		</div>
 	)
 }

@@ -17,11 +17,11 @@ export async function GET() {
 
 // POST /api/cards
 export async function POST(req: Request) {
-	const { name, code, storeName, userId } = await req.json() // Адаптируй поля под твою схему
+	const { store_name, barcode } = await req.json() // Адаптируй поля под твою схему
 
 	const { data, error } = await supabase
 		.from('cards')
-		.insert([{ name, code, storeName, userId }])
+		.insert([{ store_name, barcode }])
 
 	if (error) {
 		return NextResponse.json(

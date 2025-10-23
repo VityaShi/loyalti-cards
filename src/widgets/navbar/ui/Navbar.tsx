@@ -29,9 +29,6 @@ export default function Navbar() {
 						styles['menu-item'],
 						activeItem === 'home' && styles['menu-item--active']
 					)}
-					// onClick={() => {
-					// 	setActiveItem('home')
-					// }}
 				>
 					<Link className={styles['menu-link']} href='/cards'>
 						<Image
@@ -43,11 +40,7 @@ export default function Navbar() {
 					</Link>
 				</li>
 				<li
-					className={clsx(
-						styles['menu-item'],
-						styles['menu-item--scan']
-						// activeItem === 'scan' && styles['menu-item--active']
-					)}
+					className={clsx(styles['menu-item'], styles['menu-item--scan'])}
 					onClick={() => setActiveItem('scan')}
 				>
 					<Link className={styles['menu-link']} href='/scan'>

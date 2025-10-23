@@ -2,21 +2,52 @@
 
 import { useState } from 'react'
 import { QrReader } from 'react-qr-reader'
+
+import { supabase } from '@/shared/server'
 import styles from './scan-page.module.css'
-// const QrReader = dynamic(
-//   () => import('react-qr-reader').then(mod => mod.QrReader), // Берем конкретно QrReader
-//   { ssr: false }
-// )
 
 export default function ScanPage() {
 	const [result, setResult] = useState('Направьте камеру на карту')
 	const [error, setError] = useState<string | null>(null)
+	const [isSaving, setIsSaving] = useState(false)
+
+	const detectStoreName = (barcode: string): string => {
+		if (barcode.startsWith('2200')) return 'x5-group'
+		if (barcode.startsWith('2000')) return 'magnit'
+		if (barcode.startsWith('2300')) return 'Лента'
+		if (barcode.startsWith('4600')) return 'Перекрёсток'
+		return 'Неизвестный магазин'
+	}
+
+	const saveCardToDB = async (barcode: string) => {
+		try {
+			setIsSaving(true)
+			const storeName = detectStoreName(barcode)
+
+			const { error } = await supabase.from('cards').insert([
+				{
+					store_name: storeName,
+					barcode,
+				},
+			])
+
+			if (error) throw error
+			setResult(`Карта добавлена: ${storeName}`)
+		} catch (e: any) {
+			console.error('Ошибка сохранения:', e)
+			setError('Ошибка при сохранении карты: ' + e.message)
+		} finally {
+			setIsSaving(false)
+		}
+	}
 
 	const handleScan = (result: { getText: () => string }) => {
 		if (result && typeof result.getText === 'function') {
-			const scannedText = result.getText() // Используем getText() для получения текста
+			const scannedText = result.getText()
+			alert(scannedText)
 			setResult(scannedText)
 			console.log('Отсканировано:', scannedText)
+			saveCardToDB(scannedText)
 		}
 	}
 
@@ -31,17 +62,14 @@ export default function ScanPage() {
 			<div className={styles.scannerContainer}>
 				<QrReader
 					onResult={(result, error) => {
-						if (result) {
-							handleScan(result)
-						}
-						if (error) {
-							handleError(error)
-						}
+						if (result) handleScan(result)
+						if (error) handleError(error)
 					}}
 					constraints={{ facingMode: 'environment' }}
 				/>
 			</div>
 			<p className={styles.result}>{result}</p>
+			{isSaving && <p>Сохраняем карту...</p>}
 			{error && <p className={styles.error}>{error}</p>}
 			<button
 				onClick={() => window.history.back()}

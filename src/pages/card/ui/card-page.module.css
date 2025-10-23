@@ -12,7 +12,7 @@
 }
 .card-page__image {
 	object-fit: fill;
-	border-radius: 10px;
+	border-radius: var(--border-radius);
 }
 .card-page__barcode-container {
 	background-color: white;
@@ -20,5 +20,5 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
-	border-radius: 10px;
+	border-radius: var(--border-radius);
 }

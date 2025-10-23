@@ -1,6 +1,7 @@
 import { getAllCardIds, getCardData } from '@entities/card'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
+
+import Image from 'next/image'
 
 import Barcode from './Barcode'
 import styles from './card-page.module.css'
@@ -37,6 +38,7 @@ export async function CardPage({ params }: CardPageProps) {
 	const getPath = () => `/store-logos/${card.storeName}.png`
 
 	return (
+		// <CardSkeleton />
 		<section className={styles['card-page']}>
 			<div className={styles['card-page__image-container']}>
 				<Image
@@ -48,14 +50,12 @@ export async function CardPage({ params }: CardPageProps) {
 				/>
 			</div>
 
-			<p>{card.storeName}</p>
 			<div className={styles['card-page__barcode-container']}>
 				<Barcode
 					value={card.cardNumber}
 					format='CODE128'
 					width={1.7}
 					height={65}
-					// displayValue={false}
 					background='transparent'
 				/>
 			</div>
