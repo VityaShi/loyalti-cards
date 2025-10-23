@@ -51,9 +51,9 @@ export default function ScanPage() {
 		}
 	}
 
-	const handleError = (err: Error) => {
-		setError('Ошибка доступа к камере: ' + err.message)
+	const handleError = (err: unknown) => {
 		console.error('Ошибка сканирования:', err)
+		setError('Ошибка доступа к камере: ' + JSON.stringify(err))
 	}
 
 	return (
