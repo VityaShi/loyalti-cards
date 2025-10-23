@@ -33,9 +33,9 @@ export default function ScanPage() {
 
 			if (error) throw error
 			setResult(`Карта добавлена: ${storeName}`)
-		} catch (e: any) {
+		} catch (e: unknown) {
 			console.error('Ошибка сохранения:', e)
-			setError('Ошибка при сохранении карты: ' + e.message)
+			setError('Ошибка при сохранении карты: ' + (e as Error).message)
 		} finally {
 			setIsSaving(false)
 		}
