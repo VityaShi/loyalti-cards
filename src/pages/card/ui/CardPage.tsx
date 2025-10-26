@@ -35,7 +35,7 @@ export async function CardPage({ params }: CardPageProps) {
 		notFound()
 	}
 
-	const getPath = () => `/store-logos/${card.storeName}.png`
+	const getPath = () => `/store-logos/${card.store_name}.png`
 
 	return (
 		// <CardSkeleton />
@@ -52,7 +52,7 @@ export async function CardPage({ params }: CardPageProps) {
 
 			<div className={styles['card-page__barcode-container']}>
 				<Barcode
-					value={card.cardNumber}
+					value={card.barcode}
 					format='CODE128'
 					width={1.7}
 					height={65}

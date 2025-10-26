@@ -8,7 +8,7 @@ import styles from './card-item.module.css'
 export const CardItem = (data: Card) => {
 	const [imageError, setImageError] = useState(false)
 
-	const getPath = () => `/store-logos/${data.storeName}.png`
+	const getPath = () => `/store-logos/${data.store_name}.png`
 
 	// Не рендерим компонент, если изображение не найдено
 	if (imageError) return null
@@ -23,8 +23,8 @@ export const CardItem = (data: Card) => {
 				priority
 				onError={() => setImageError(true)} // Устанавливаем состояние ошибки при неудачной загрузке
 			/>
-			{/* <h3 className='text-lg font-semibold'>{data.storeName}</h3>
-      <p className='text-gray-600'>{data.cardNumber}</p> */}
+			{/* <h3 className='text-lg font-semibold'>{data.store_name}</h3>
+      <p className='text-gray-600'>{data.barcode}</p> */}
 		</article>
 	)
 }

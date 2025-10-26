@@ -1,5 +1,6 @@
 export interface Card {
 	id: string
-	storeName: string
-	cardNumber: string
+	store_name: string
+	barcode: string
+	created_at: string
 }
