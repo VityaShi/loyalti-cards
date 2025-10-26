@@ -10,10 +10,10 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-	padding-bottom: env(
+	/* padding-bottom: env(
 		safe-area-inset-bottom,
 		0px
-	); /* Отступ для системного UI */
+	); Отступ для системного UI */
 }
 
 .menu-list {

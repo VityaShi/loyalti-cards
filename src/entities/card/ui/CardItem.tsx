@@ -14,8 +14,9 @@ export const CardItem = (data: Card) => {
 	if (imageError) return null
 
 	return (
-		<article className={styles.container}>
+		<article className={styles.card}>
 			<Image
+				className={styles.card__image}
 				src={getPath()} // путь относительно /public
 				alt='Логотип'
 				width={120}
